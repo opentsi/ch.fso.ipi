@@ -6,7 +6,7 @@ library(opentimeseries)
 library(tsdbapi)
 keys <- read_dataset_keys("ch.fso.ipi")
 length(keys)
-all_vintages <- read_ts_history(keys, ignore_missing= TRUE) # cannot read all keys
+all_vintages <- read_ts_history(keys, ignore_missing = TRUE) # cannot read all keys
 
 # read_ts_history returns names as key_YYYYMMDD; convert to key.YYYY-MM
 # so that create_vintage_dt can strip the .YYYY-MM suffix to recover the key
@@ -28,7 +28,7 @@ archive_import_history(vintages_dt, repository_path = ".")
 ## Step 5: Write & Validate Metadata
 
 # check if info is available via api
-ipi_meta <- read_dataset_ts_metadata("ch.fso.ipi") 
+ipi_meta <- read_dataset_ts_metadata("ch.fso.ipi")
 
 render_metadata()
 meta <- read_meta(".")
@@ -52,3 +52,4 @@ check()
 install()
 
 
+build_readme()
